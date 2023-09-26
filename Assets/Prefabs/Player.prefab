@@ -913,6 +913,7 @@ GameObject:
   - component: {fileID: 7218534393653820760}
   - component: {fileID: 7345649703714623094}
   - component: {fileID: 2129848337666107473}
+  - component: {fileID: 8801092205952517192}
   - component: {fileID: 7406529781529413760}
   m_Layer: 0
   m_Name: Player
@@ -991,6 +992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c591ff275e168a4f9402955417bc21d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterController: {fileID: 0}
 --- !u!114 &2129848337666107473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1008,6 +1010,22 @@ MonoBehaviour:
   moveAmount: 0
   walkingSpeed: 2
   runningSpeed: 5
+--- !u!114 &8801092205952517192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3616510130012112549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1cfcac76493ba4eb9865182f1cc70e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkPosition:
+    m_InternalValue: {x: 0, y: 0, z: 0}
+  networkPositionVelocity: {x: 0, y: 0, z: 0}
+  networkPositionSmoothTime: 0.1
 --- !u!143 &7406529781529413760
 CharacterController:
   m_ObjectHideFlags: 0

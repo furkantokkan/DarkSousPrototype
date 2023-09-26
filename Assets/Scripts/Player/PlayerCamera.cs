@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerCamera : MonoBehaviour
 {
     public static PlayerCamera instance;
+
+    public Camera mainCamera;
+
     private void Awake()
     {
         if (instance == null)
@@ -15,6 +18,8 @@ public class PlayerCamera : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        mainCamera = GetComponentInChildren<Camera>();
     }
 
     private void Start()

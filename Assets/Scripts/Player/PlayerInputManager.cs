@@ -19,6 +19,7 @@ public class PlayerInputManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -28,11 +29,24 @@ public class PlayerInputManager : MonoBehaviour
     }
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
-
         SceneManager.activeSceneChanged += OnSceneChange;
 
         isWorking = false;
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (isWorking)
+        {
+            if (focus)
+            {
+                playerControls.Enable();
+            }
+            else
+            {
+                playerControls.Disable();
+            }
+        }
     }
 
     private void Update()
@@ -52,7 +66,6 @@ public class PlayerInputManager : MonoBehaviour
         }
 
         playerControls.PlayerMovement.Movement.performed += x => movement = x.ReadValue<Vector2>();
-
         playerControls.Enable();
     }
     private void OnDisable()
@@ -64,7 +77,6 @@ public class PlayerInputManager : MonoBehaviour
     {
         horizontalInput = movement.x;
         verticalInput = movement.y;
-
         moveAmount = Mathf.Clamp01(Mathf.Abs(verticalInput) + Mathf.Abs(horizontalInput));
 
         if (moveAmount <= 0.5f && moveAmount > 0)
